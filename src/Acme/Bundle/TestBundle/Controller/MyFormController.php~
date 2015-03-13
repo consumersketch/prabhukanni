@@ -1,0 +1,30 @@
+<?php
+
+namespace Acme\Bundle\TestBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Acme\Bundle\TestBundle\Entity\Clients;
+use Acme\Bundle\TestBundle\Entity\Invoices;
+use Acme\Bundle\TestBundle\Entity\Products;
+use Acme\Bundle\TestBundle\Manager;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+class MyFormController extends Controller
+{
+/**
+     * @Route("/symfony_test", name="symfony_test")
+     */
+	public function fillClientAction() 
+	{
+	$clientInvoicesArray = array();
+		
+	$clients = $this->getDoctrine()->getEntityManager()->getRepository('AcmeTestBundle:Clients')->getAllClients();
+$products = $this->getDoctrine()->getEntityManager()->getRepository('AcmeTestBundle:Products')->getAllProducts();	
+	return $this->render('default/index.html.twig', array('clients'=>$clients, 'products'=>$products));
+	}
+}
+	
+	

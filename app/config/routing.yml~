@@ -1,0 +1,12 @@
+acme_test:
+    resource: "@AcmeTestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
+
+symfony_test:
+    path:     /symfony_test
+    defaults: { _controller: 'AcmeTestBundle:MyForm:result' }
